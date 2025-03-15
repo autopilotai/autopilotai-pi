@@ -1,20 +1,29 @@
 from fastapi import FastAPI
-from picamera2 import PiCamera2
+from picamera2 import Picamera2
 import uvicorn
 from io import BytesIO
 import base64
+import numpy as np
 
 app = FastAPI()
 
 @app.get("/capture")
 def capture_image():
     try:
-        camera = PiCamera2()
-        stream = BytesIO()
-        camera.capture(stream, format='jpeg')
-        stream.seek(0)
-        image_base64 = base64.b64encode(stream.read()).decode('utf-8')
-        camera.close()
+        camera = Picamera2()
+        config = camera.create_still_configuration()
+        camera.configure(config)
+
+        camera.start()
+        np_array = camera.capture_array()
+        camera.capture_file("image.jpg")
+        camera.stop()
+
+        # Convert the numpy array to bytes
+        image_bytes = np_array.tobytes()
+        # Encode the bytes to base64
+        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+
         return {"image": image_base64}
     except Exception as e:
         return {"error": str(e)}
