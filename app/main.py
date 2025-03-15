@@ -3,7 +3,6 @@ from picamera2 import Picamera2
 import uvicorn
 from io import BytesIO
 import base64
-import numpy as np
 
 app = FastAPI()
 
@@ -16,6 +15,7 @@ def capture_image():
 
         camera.start()
         np_array = camera.capture_array()
+        print(np_array)
         camera.capture_file("image.jpg")
         camera.stop()
 

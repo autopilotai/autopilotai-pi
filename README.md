@@ -5,3 +5,6 @@
 sudo apt install python3-fastapi
 sudo apt install python3-uvicorn
 sudo apt install python3-picamera2
+
+python app/main.py
+```
