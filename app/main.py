@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from picamera import PiCamera
+from picamera2 import PiCamera2
 import uvicorn
 from io import BytesIO
 import base64
@@ -9,7 +9,7 @@ app = FastAPI()
 @app.get("/capture")
 def capture_image():
     try:
-        camera = PiCamera()
+        camera = PiCamera2()
         stream = BytesIO()
         camera.capture(stream, format='jpeg')
         stream.seek(0)
