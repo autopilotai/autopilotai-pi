@@ -1,3 +1,4 @@
+import time
 from fastapi import FastAPI
 from picamera2 import Picamera2
 import uvicorn
@@ -9,10 +10,6 @@ app = FastAPI()
 @app.get("/capture")
 def capture_image():
     try:
-        camera = Picamera2()
-        config = camera.create_still_configuration()
-        camera.configure(config)
-
         camera.start()
         time.sleep(2)
         np_array = camera.capture_array()
@@ -30,4 +27,7 @@ def capture_image():
         return {"error": str(e)}
 
 if __name__ == "__main__":
+    camera = Picamera2()
+    config = camera.create_still_configuration()
+    camera.configure(config)
     uvicorn.run(app, host="0.0.0.0", port=8000)
