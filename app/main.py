@@ -14,9 +14,10 @@ def capture_image():
         camera.configure(config)
 
         camera.start()
+        time.sleep(2)
         np_array = camera.capture_array()
-        print(np_array)
         camera.capture_file("image.jpg")
+        time.sleep(2)
         camera.stop()
 
         # Convert the numpy array to bytes
