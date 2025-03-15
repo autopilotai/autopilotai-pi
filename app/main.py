@@ -1,12 +1,14 @@
 import time
 from fastapi import FastAPI
-from picamera2 import Picamera2
+from picamera2 import Picamera2, Preview
 import uvicorn
 from io import BytesIO
 import base64
 
 camera = Picamera2()
-config = camera.create_still_configuration()
+camera.start_preview(Preview.QTGL)
+config = camera.create_preview_configuration(main={"size": (800, 600)})
+# config = camera.create_still_configuration()
 camera.configure(config)
 
 app = FastAPI()
@@ -17,7 +19,7 @@ def capture_image():
         camera.start()
         time.sleep(2)
         # np_array = camera.capture_array()
-        camera.capture_file("image.jpg")
+        camera.capture_file("image.png")
         time.sleep(2)
         camera.stop()
 
