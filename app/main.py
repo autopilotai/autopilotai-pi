@@ -16,17 +16,17 @@ def capture_image():
     try:
         camera.start()
         time.sleep(2)
-        np_array = camera.capture_array()
+        # np_array = camera.capture_array()
         camera.capture_file("image.jpg")
         time.sleep(2)
         camera.stop()
 
-        # Convert the numpy array to bytes
-        image_bytes = np_array.tobytes()
-        # Encode the bytes to base64
-        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+        # # Convert the numpy array to bytes
+        # image_bytes = np_array.tobytes()
+        # # Encode the bytes to base64
+        # image_base64 = base64.b64encode(image_bytes).decode('utf-8')
 
-        return {"image": image_base64}
+        return {"image": "image_base64"}
     except Exception as e:
         return {"error": str(e)}
 
