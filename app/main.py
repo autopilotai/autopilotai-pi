@@ -5,6 +5,10 @@ import uvicorn
 from io import BytesIO
 import base64
 
+camera = Picamera2()
+config = camera.create_still_configuration()
+camera.configure(config)
+
 app = FastAPI()
 
 @app.get("/capture")
@@ -27,7 +31,4 @@ def capture_image():
         return {"error": str(e)}
 
 if __name__ == "__main__":
-    camera = Picamera2()
-    config = camera.create_still_configuration()
-    camera.configure(config)
     uvicorn.run(app, host="0.0.0.0", port=8000)
