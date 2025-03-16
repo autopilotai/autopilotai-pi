@@ -6,8 +6,6 @@ from io import BytesIO
 import base64
 
 camera = Picamera2()
-# camera.start_preview(Preview.QTGL)
-# config = camera.create_preview_configuration(main={"size": (800, 600)})
 config = camera.create_still_configuration()
 camera.configure(config)
 
@@ -18,7 +16,6 @@ def capture_image():
     try:
         camera.start()
         time.sleep(2)
-        # np_array = camera.capture_array()
         camera.capture_file("image.jpeg")
         camera.stop()
 
