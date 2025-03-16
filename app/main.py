@@ -2,7 +2,6 @@ import time
 from fastapi import FastAPI
 from picamera2 import Picamera2
 import uvicorn
-from io import BytesIO
 import base64
 
 camera = Picamera2()
