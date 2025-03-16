@@ -36,6 +36,11 @@ python app/main.py
 
 ### Optional: Setup to run as a service
 ```sh
+sudo cp autopilotai-pi.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable autopilotai-pi.service
+sudo systemctl start autopilotai-pi.service 
+sudo systemctl status autopilotai-pi.service 
 ```
 
 ### Test the endpoint
