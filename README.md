@@ -14,6 +14,8 @@ sudo apt upgrade
 
 ### Install application packages
 ```sh
+git clone https://github.com/autopilotai/autopilotai-pi.git
+
 sudo apt install python3-fastapi
 sudo apt install python3-uvicorn
 sudo apt install python3-picamera2
