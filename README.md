@@ -10,15 +10,17 @@
 ```sh
 sudo apt update
 sudo apt upgrade
+
+sudo apt install git
 ```
+### Install Tailscale
+https://tailscale.com/kb/1174/install-debian-bookworm
 
 ### Install application packages
 ```sh
 git clone https://github.com/autopilotai/autopilotai-pi.git
 
-sudo apt install python3-fastapi
-sudo apt install python3-uvicorn
-sudo apt install python3-picamera2
+sudo apt install python3-fastapi python3-uvicorn python3-picamera2
 ```
 
 ### Run the application
