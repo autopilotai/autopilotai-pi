@@ -34,5 +34,9 @@ sudo apt install python3-fastapi python3-uvicorn python3-picamera2
 python app/main.py
 ```
 
+### Optional: Setup to run as a service
+```sh
+```
+
 ### Test the endpoint
 - GET http://localhost:8000/capture

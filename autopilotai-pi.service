@@ -1,0 +1,12 @@
+[Unit]
+Description=AutopilotAI Pi Python Script Service
+After=network.target
+
+[Service]
+User=shaunaa126 
+WorkingDirectory=/home/shaunaa126/autopilotai-pi
+ExecStart=/usr/bin/python app/main.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
