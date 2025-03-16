@@ -5,7 +5,7 @@ import uvicorn
 import base64
 
 camera = Picamera2()
-config = camera.create_still_configuration()
+config = camera.create_still_configuration(main={"size": (800, 600)})
 camera.configure(config)
 
 app = FastAPI()
