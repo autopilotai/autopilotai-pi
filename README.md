@@ -16,6 +16,12 @@ sudo apt install git
 ### Install Tailscale
 https://tailscale.com/kb/1174/install-debian-bookworm
 
+#### Setup Tailscale as a service
+```sh
+sudo systemctl enable tailscaled
+sudo systemctl start tailscaled
+```
+
 ### Install application packages
 ```sh
 git clone https://github.com/autopilotai/autopilotai-pi.git
